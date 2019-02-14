@@ -6,8 +6,9 @@ type person struct {
 	age int
 }
 
+// Method to create a new person struct
 func (p person) NewPerson(initialAge int) person {
-	//Add some more code to run some checks on initialAge
+	// Run some checks on initialAge
 	if initialAge < 0 {
 		fmt.Println("Age is not valid, setting age to 0.")
 		p.age = 0
@@ -19,7 +20,7 @@ func (p person) NewPerson(initialAge int) person {
 }
 
 func (p person) amIOld() {
-	//Do some computation in here and print out the correct statement to the console
+	// Doing some computation in here to print out the correct statement to the console
 	if p.age < 13 {
 		fmt.Println("You are young.")
 	} else if p.age >= 13 && p.age < 18 {
@@ -29,8 +30,8 @@ func (p person) amIOld() {
 	}
 }
 
+//Increment the age of the person
 func (p person) yearPasses() person {
-	//Increment the age of the person in here
 	p.age += 1
 
 	return p

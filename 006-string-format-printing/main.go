@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-
+	// Read from stdin
 	reader := bufio.NewReader(os.Stdin)
 	s, err := reader.ReadString('\n')
 	if err != nil {
@@ -29,6 +29,9 @@ func main() {
 	var e string
 	var o string
 
+	// Check the index of input data and assign
+	// even indexes to evens slice, odd to odds
+	// then concatenate and format for output
 	for i := 0; i < int(n); i++ {
 		s, _ := reader.ReadString('\n')
 		s = strings.Trim(s, "\n")
