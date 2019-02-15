@@ -10,25 +10,22 @@ import (
 )
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
+	// Read from stdin
+	reader := bufio.NewReaderSize(os.Stdin, 1024*1024)
 
-	nTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
-	if err != nil {
-		fmt.Println(err)
+	// Handle the first line of input
+	_, err := strconv.ParseInt(readLine(reader), 10, 64)
+	checkError(err)
+
+	// Handle input array and split strings into array
+	arr := strings.Split(readLine(reader), " ")
+
+	// Reverse the array then print in space separated format
+	for i, j := 0, len(arr)-1; i < j; i, j = i+1, j-1 {
+		arr[i], arr[j] = arr[j], arr[i]
 	}
-	n := int(nTemp)
 
-	strArr := strings.Split(readLine(reader), " ")
-
-	reversedArr := []string{}
-
-	for i := n - 1; i >= 0; i-- {
-		reversedArr = append(reversedArr, strArr[i])
-	}
-
-	output := strings.Join(reversedArr, " ")
-	fmt.Println(output)
-
+	fmt.Println(strings.Join(arr, " "))
 }
 
 func readLine(reader *bufio.Reader) string {
@@ -38,4 +35,10 @@ func readLine(reader *bufio.Reader) string {
 	}
 
 	return strings.TrimRight(string(str), "\r\n")
+}
+
+func checkError(err error) {
+	if err != nil {
+		panic(err)
+	}
 }
