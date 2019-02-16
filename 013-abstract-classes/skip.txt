@@ -1,0 +1,1 @@
+No real go comparison for abstract classes so skipping this problem in go.
